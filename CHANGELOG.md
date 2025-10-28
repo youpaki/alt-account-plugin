@@ -1,5 +1,34 @@
 # Changelog - AltAccount Plugin
 
+## Version 1.1.0 - 28 octobre 2025
+
+### 🔄 Corrections majeures - Persistance et Skins
+- **Persistance des alt accounts** : Les joueurs gardent maintenant leur alt account lors des reconnexions
+- **Système de skins fonctionnel** : La commande `/skin` récupère maintenant les vraies skins via l'API Mojang
+- **Sauvegarde automatique** : Les données de déguisement sont automatiquement sauvegardées dans `disguises.yml`
+- **Restauration transparente** : Reconnexion automatique avec le dernier alt account utilisé
+
+### ✨ Nouvelles fonctionnalités
+- **SkinManager** : Nouveau système utilisant l'API Mojang officielle pour les skins
+- **Données de skin persistantes** : Les skins personnalisés sont maintenant sauvegardés avec les alts
+- **Messages informatifs** : Meilleurs retours utilisateur lors des changements de skin
+- **Gestion d'erreurs améliorée** : Messages d'erreur plus clairs pour les problèmes de réseau ou de joueurs inexistants
+
+### 🛠️ Améliorations techniques
+- **API asynchrone** : Récupération des skins sans lag du serveur
+- **Cache intelligent** : Évite les requêtes répétées vers l'API Mojang
+- **Intégration Gson** : Parsing JSON natif pour les réponses de l'API
+- **Events optimisés** : Gestion robuste des connexions/déconnexions
+
+### 📝 Nouvelles classes
+- `SkinManager.java` - Gestion complète des skins
+- `SkinData.java` - Structure de données pour les textures et signatures
+
+### 🐛 Problèmes résolus
+- **Noms originaux réapparaissant** : Les noms d'alt persistent maintenant lors des reconnexions
+- **Skins non visibles** : Les skins personnalisés fonctionnent maintenant (visibles pour les autres)
+- **Perte de déguisement** : Les déguisements sont automatiquement restaurés
+
 ## Version 1.0.1 - 28 octobre 2025
 
 ### 🐛 Corrections critiques

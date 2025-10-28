@@ -57,13 +57,8 @@ public class SkinCommand implements CommandExecutor {
         
         String currentAlt = dataManager.getCurrentAlt(player.getUniqueId());
         if (currentAlt != null) {
-            player.sendMessage(ChatColor.YELLOW + "Loading skin from player: " + ChatColor.BOLD + targetPlayer);
-            player.sendMessage(ChatColor.GRAY + "This may take a few seconds...");
-            
-            // Apply the new skin (this will re-disguise the player with the new skin)
-            plugin.getDisguiseManager().disguisePlayer(player, currentAlt);
-            
-            player.sendMessage(ChatColor.GREEN + "Skin updated successfully!");
+            // Utiliser le nouveau SkinManager pour appliquer la skin
+            plugin.getSkinManager().applySkinToPlayer(player, targetPlayer);
         } else {
             player.sendMessage(ChatColor.RED + "Error: Could not determine current alt account.");
         }

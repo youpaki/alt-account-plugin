@@ -6,12 +6,14 @@ import com.example.altaccount.commands.RandomCommand;
 import com.example.altaccount.commands.SkinCommand;
 import com.example.altaccount.data.AltDataManager;
 import com.example.altaccount.disguise.DisguiseManager;
+import com.example.altaccount.skin.SkinManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class AltAccountPlugin extends JavaPlugin {
     
     private AltDataManager dataManager;
     private DisguiseManager disguiseManager;
+    private SkinManager skinManager;
     
     @Override
     public void onEnable() {
@@ -20,6 +22,9 @@ public class AltAccountPlugin extends JavaPlugin {
         
         // Initialize disguise manager
         disguiseManager = new DisguiseManager(this);
+        
+        // Initialize skin manager
+        skinManager = new SkinManager(this);
         
         // Register commands
         getCommand("alt").setExecutor(new AltCommand(this));
@@ -38,6 +43,10 @@ public class AltAccountPlugin extends JavaPlugin {
             dataManager.saveAllData();
         }
         
+        if (disguiseManager != null) {
+            disguiseManager.saveData();
+        }
+        
         getLogger().info("AltAccountPlugin has been disabled!");
     }
     
@@ -47,5 +56,9 @@ public class AltAccountPlugin extends JavaPlugin {
     
     public DisguiseManager getDisguiseManager() {
         return disguiseManager;
+    }
+    
+    public SkinManager getSkinManager() {
+        return skinManager;
     }
 }

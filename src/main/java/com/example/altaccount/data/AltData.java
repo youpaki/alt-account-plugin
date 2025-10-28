@@ -22,6 +22,8 @@ public class AltData implements ConfigurationSerializable {
     private double health;
     private int fireTicks;
     private int airTicks;
+    private String skinTexture;
+    private String skinSignature;
     
     public AltData() {
         // Default constructor for deserialization
@@ -29,7 +31,8 @@ public class AltData implements ConfigurationSerializable {
     
     public AltData(ItemStack[] inventory, ItemStack[] armor, ItemStack offHand, 
                    Location location, int experience, int level, float exhaustion,
-                   int foodLevel, float saturation, double health, int fireTicks, int airTicks) {
+                   int foodLevel, float saturation, double health, int fireTicks, int airTicks,
+                   String skinTexture, String skinSignature) {
         this.inventory = inventory;
         this.armor = armor;
         this.offHand = offHand;
@@ -42,6 +45,8 @@ public class AltData implements ConfigurationSerializable {
         this.health = health;
         this.fireTicks = fireTicks;
         this.airTicks = airTicks;
+        this.skinTexture = skinTexture;
+        this.skinSignature = skinSignature;
     }
     
     // Getters
@@ -57,6 +62,8 @@ public class AltData implements ConfigurationSerializable {
     public double getHealth() { return health; }
     public int getFireTicks() { return fireTicks; }
     public int getAirTicks() { return airTicks; }
+    public String getSkinTexture() { return skinTexture; }
+    public String getSkinSignature() { return skinSignature; }
     
     // Setters
     public void setInventory(ItemStack[] inventory) { this.inventory = inventory; }
@@ -71,6 +78,8 @@ public class AltData implements ConfigurationSerializable {
     public void setHealth(double health) { this.health = health; }
     public void setFireTicks(int fireTicks) { this.fireTicks = fireTicks; }
     public void setAirTicks(int airTicks) { this.airTicks = airTicks; }
+    public void setSkinTexture(String skinTexture) { this.skinTexture = skinTexture; }
+    public void setSkinSignature(String skinSignature) { this.skinSignature = skinSignature; }
     
     @Override
     public Map<String, Object> serialize() {
@@ -87,6 +96,8 @@ public class AltData implements ConfigurationSerializable {
         result.put("health", health);
         result.put("fireTicks", fireTicks);
         result.put("airTicks", airTicks);
+        result.put("skinTexture", skinTexture);
+        result.put("skinSignature", skinSignature);
         return result;
     }
     
@@ -138,6 +149,9 @@ public class AltData implements ConfigurationSerializable {
         
         Object air = args.get("airTicks");
         data.airTicks = air != null ? (Integer) air : 300;
+        
+        data.skinTexture = (String) args.get("skinTexture");
+        data.skinSignature = (String) args.get("skinSignature");
         
         return data;
     }

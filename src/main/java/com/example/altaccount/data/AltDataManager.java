@@ -79,6 +79,13 @@ public class AltDataManager {
     }
     
     private AltData createAltDataFromPlayer(Player player) {
+        // Récupérer les données de skin actuelles du joueur
+        String skinTexture = null;
+        String skinSignature = null;
+        
+        // Note: Pour récupérer les vraies données de skin, nous aurions besoin de ProtocolLib
+        // Pour l'instant, nous stockons null et gérerons cela différemment
+        
         return new AltData(
             player.getInventory().getContents(),
             player.getInventory().getArmorContents(),
@@ -91,7 +98,9 @@ public class AltDataManager {
             player.getSaturation(),
             player.getHealth(),
             player.getFireTicks(),
-            player.getRemainingAir()
+            player.getRemainingAir(),
+            skinTexture,
+            skinSignature
         );
     }
     
@@ -183,6 +192,18 @@ public class AltDataManager {
     public void saveAllData() {
         for (Map.Entry<String, AltData> entry : altDataCache.entrySet()) {
             saveAltDataToFile(entry.getKey(), entry.getValue());
+        }
+    }
+    
+    public void updateAltSkinData(UUID playerUuid, String altName, String skinTexture, String skinSignature) {
+        String key = getAltKey(playerUuid, altName);
+        AltData data = altDataCache.get(key);
+        
+        if (data != null) {
+            data.setSkinTexture(skinTexture);
+            data.setSkinSignature(skinSignature);
+            saveAltDataToFile(key, data);
+            plugin.getLogger().info("Données de skin mises à jour pour l'alt " + altName + " du joueur " + playerUuid);
         }
     }
 }
