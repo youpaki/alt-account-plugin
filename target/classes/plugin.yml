@@ -1,0 +1,58 @@
+name: AltAccountPlugin
+version: '1.1.0'
+main: com.example.altaccount.AltAccountPlugin
+api-version: 1.20
+description: Plugin to create and manage alt accounts for players with disguise features
+author: YourName
+website: https://github.com/yourname/alt-account-plugin
+
+commands:
+  alt:
+    description: Create or switch to an alt account
+    usage: /alt <username>
+    permission: altaccount.alt
+    permission-message: "§cYou don't have permission to use alt accounts!"
+  
+  main:
+    description: Switch back to your main account
+    usage: /main
+    permission: altaccount.main
+    permission-message: "§cYou don't have permission to switch to main account!"
+  
+  random:
+    description: Teleport to a random location in the world
+    usage: /random
+    permission: altaccount.random
+    permission-message: "§cYou don't have permission to use random teleport!"
+  
+  skin:
+    description: Change the skin of your current alt account
+    usage: /skin <player_name>
+    permission: altaccount.skin
+    permission-message: "§cYou don't have permission to change skins!"
+
+permissions:
+  altaccount.*:
+    description: Gives access to all alt account features
+    children:
+      altaccount.alt: true
+      altaccount.main: true
+      altaccount.random: true
+      altaccount.skin: true
+    default: op
+  
+  altaccount.alt:
+    description: Allows creating and switching to alt accounts
+    default: op
+  
+  altaccount.main:
+    description: Allows switching back to main account
+    default: op
+  
+  altaccount.random:
+    description: Allows using random teleport
+    default: op
+  
+  altaccount.skin:
+    description: Allows changing alt account skins
+    default: op

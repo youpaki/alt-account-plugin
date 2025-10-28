@@ -1,0 +1,8 @@
+com/example/altaccount/commands/RandomCommand.class
+com/example/altaccount/disguise/DisguiseManager.class
+com/example/altaccount/commands/MainCommand.class
+com/example/altaccount/commands/SkinCommand.class
+com/example/altaccount/data/AltDataManager.class
+com/example/altaccount/AltAccountPlugin.class
+com/example/altaccount/commands/AltCommand.class
+com/example/altaccount/data/AltData.class

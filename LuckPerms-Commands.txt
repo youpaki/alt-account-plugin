@@ -1,0 +1,91 @@
+# Exemples de configuration LuckPerms pour AltAccount Plugin
+
+# ============================================
+# CONFIGURATION RECOMMANDÉE POUR LUCKPERMS
+# ============================================
+
+# 1. Créer un groupe pour les utilisateurs d'alts
+/lp creategroup altusers
+
+# 2. Donner toutes les permissions du plugin à ce groupe
+/lp group altusers permission set altaccount.* true
+
+# 3. Ajouter des joueurs à ce groupe
+/lp user NomDuJoueur parent add altusers
+
+# ============================================
+# CONFIGURATIONS ALTERNATIVES
+# ============================================
+
+# Configuration pour admins/modérateurs (toutes permissions)
+/lp group admin permission set altaccount.* true
+
+# Configuration pour VIP (toutes permissions sauf admin)
+/lp group vip permission set altaccount.alt true
+/lp group vip permission set altaccount.main true
+/lp group vip permission set altaccount.random true
+
+# Configuration pour joueurs normaux (seulement alt et main)
+/lp group default permission set altaccount.alt true
+/lp group default permission set altaccount.main true
+
+# Configuration restrictive (seulement les alts, pas de teleport random)
+/lp group restricted permission set altaccount.alt true
+/lp group restricted permission set altaccount.main true
+
+# ============================================
+# PERMISSIONS TEMPORAIRES
+# ============================================
+
+# Donner permission temporaire (7 jours)
+/lp user NomDuJoueur permission settemp altaccount.* true 7d
+
+# Donner permission temporaire (1 heure)
+/lp user NomDuJoueur permission settemp altaccount.random true 1h
+
+# ============================================
+# PERMISSIONS PAR MONDE
+# ============================================
+
+# Donner permissions seulement dans le monde "survival"
+/lp group altusers permission set altaccount.alt true survival
+
+# Retirer permissions dans le monde "creative"
+/lp group altusers permission set altaccount.* false creative
+
+# ============================================
+# VÉRIFICATIONS UTILES
+# ============================================
+
+# Voir toutes les permissions d'un joueur
+/lp user NomDuJoueur permission info
+
+# Vérifier une permission spécifique
+/lp user NomDuJoueur permission check altaccount.alt
+
+# Voir les permissions d'un groupe
+/lp group altusers permission info
+
+# Lister tous les groupes
+/lp listgroups
+
+# ============================================
+# DÉPANNAGE
+# ============================================
+
+# Si les permissions ne fonctionnent pas :
+
+# 1. Vérifiez que LuckPerms est installé et fonctionne
+/lp info
+
+# 2. Rechargez les permissions
+/lp reload
+
+# 3. Vérifiez la configuration du serveur (server.properties)
+# Assurez-vous que online-mode=true ou que vous avez configuré l'UUID correctement
+
+# 4. Vérifiez les logs du serveur pour les erreurs
+# Les erreurs de permissions apparaîtront dans les logs
+
+# 5. Test en jeu
+# Connectez-vous et testez : /alt test
