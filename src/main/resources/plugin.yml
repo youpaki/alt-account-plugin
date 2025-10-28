@@ -30,6 +30,12 @@ commands:
     usage: /skin <player_name>
     permission: altaccount.skin
     permission-message: "§cYou don't have permission to change skins!"
+  
+  altlist:
+    description: List all your alt accounts
+    usage: /altlist
+    permission: altaccount.list
+    permission-message: "§cYou don't have permission to list alt accounts!"
 
 permissions:
   altaccount.*:
@@ -39,6 +45,7 @@ permissions:
       altaccount.main: true
       altaccount.random: true
       altaccount.skin: true
+      altaccount.list: true
     default: op
   
   altaccount.alt:
@@ -55,4 +62,8 @@ permissions:
   
   altaccount.skin:
     description: Allows changing alt account skins
+    default: op
+  
+  altaccount.list:
+    description: Allows listing alt accounts
     default: op

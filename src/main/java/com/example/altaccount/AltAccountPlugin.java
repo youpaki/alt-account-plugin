@@ -1,6 +1,7 @@
 package com.example.altaccount;
 
 import com.example.altaccount.commands.AltCommand;
+import com.example.altaccount.commands.AltListCommand;
 import com.example.altaccount.commands.MainCommand;
 import com.example.altaccount.commands.RandomCommand;
 import com.example.altaccount.commands.SkinCommand;
@@ -31,6 +32,7 @@ public class AltAccountPlugin extends JavaPlugin {
         getCommand("main").setExecutor(new MainCommand(this));
         getCommand("random").setExecutor(new RandomCommand(this));
         getCommand("skin").setExecutor(new SkinCommand(this));
+        getCommand("altlist").setExecutor(new AltListCommand(this));
         
         // Log plugin enabled
         getLogger().info("AltAccountPlugin has been enabled!");

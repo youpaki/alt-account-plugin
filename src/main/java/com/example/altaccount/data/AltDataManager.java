@@ -206,4 +206,31 @@ public class AltDataManager {
             plugin.getLogger().info("Données de skin mises à jour pour l'alt " + altName + " du joueur " + playerUuid);
         }
     }
+    
+    public java.util.List<String> getPlayerAlts(UUID playerUuid) {
+        java.util.List<String> alts = new java.util.ArrayList<>();
+        String playerUuidStr = playerUuid.toString();
+        
+        // Parcourir tous les fichiers d'alts pour ce joueur
+        if (dataFolder.exists()) {
+            File[] files = dataFolder.listFiles((dir, name) -> 
+                name.startsWith(playerUuidStr + "_") && name.endsWith(".yml"));
+            
+            if (files != null) {
+                for (File file : files) {
+                    String fileName = file.getName().replace(".yml", "");
+                    String altName = fileName.substring(playerUuidStr.length() + 1);
+                    
+                    // Ne pas inclure "main" dans la liste des alts
+                    if (!"main".equals(altName)) {
+                        alts.add(altName);
+                    }
+                }
+            }
+        }
+        
+        // Trier par ordre alphabétique
+        java.util.Collections.sort(alts);
+        return alts;
+    }
 }

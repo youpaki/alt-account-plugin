@@ -31,6 +31,12 @@ public class RandomCommand implements CommandExecutor {
         
         Player player = (Player) sender;
         
+        // Check for help argument
+        if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
+            showHelp(player);
+            return true;
+        }
+        
         // Check permission
         if (!player.hasPermission("altaccount.random")) {
             player.sendMessage(ChatColor.RED + "You don't have permission to use random teleport!");
@@ -161,5 +167,30 @@ public class RandomCommand implements CommandExecutor {
         }
         
         return null;
+    }
+    
+    private void showHelp(Player player) {
+        player.sendMessage("");
+        player.sendMessage(ChatColor.GOLD + "=== " + ChatColor.YELLOW + "Random Command Help" + ChatColor.GOLD + " ===");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.AQUA + "/random" + ChatColor.GRAY + " - Teleport to a random location");
+        player.sendMessage(ChatColor.GRAY + "  Finds a safe location anywhere in the world and teleports you there");
+        player.sendMessage(ChatColor.GRAY + "  Coordinates range from -29,999,984 to +29,999,984");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.AQUA + "/random help" + ChatColor.GRAY + " - Show this help message");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Safety Features:");
+        player.sendMessage(ChatColor.GRAY + "  • Avoids lava, fire, and other hazards");
+        player.sendMessage(ChatColor.GRAY + "  • Finds solid ground with air above");
+        player.sendMessage(ChatColor.GRAY + "  • Falls back to spawn area if no safe location found");
+        player.sendMessage(ChatColor.GRAY + "  • Checks multiple locations before giving up");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Usage Tips:");
+        player.sendMessage(ChatColor.GRAY + "  • Great for exploration and finding new areas");
+        player.sendMessage(ChatColor.GRAY + "  • Works in any world dimension");
+        player.sendMessage(ChatColor.GRAY + "  • Can be used repeatedly for different locations");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.GREEN + "Permission: " + ChatColor.WHITE + "altaccount.random");
+        player.sendMessage("");
     }
 }

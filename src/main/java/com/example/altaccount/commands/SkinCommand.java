@@ -27,6 +27,12 @@ public class SkinCommand implements CommandExecutor {
         
         Player player = (Player) sender;
         
+        // Check for help argument
+        if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
+            showHelp(player);
+            return true;
+        }
+        
         // Check permission
         if (!player.hasPermission("altaccount.skin")) {
             player.sendMessage(ChatColor.RED + "You don't have permission to change skins!");
@@ -68,5 +74,33 @@ public class SkinCommand implements CommandExecutor {
     
     private boolean isValidUsername(String username) {
         return username.matches("^[a-zA-Z0-9_]{3,16}$");
+    }
+    
+    private void showHelp(Player player) {
+        player.sendMessage("");
+        player.sendMessage(ChatColor.GOLD + "=== " + ChatColor.YELLOW + "Skin Command Help" + ChatColor.GOLD + " ===");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.AQUA + "/skin <player_name>" + ChatColor.GRAY + " - Change your alt's skin");
+        player.sendMessage(ChatColor.GRAY + "  Downloads and applies the skin of the specified player");
+        player.sendMessage(ChatColor.GRAY + "  You must be on an alt account to use this command");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.AQUA + "/skin help" + ChatColor.GRAY + " - Show this help message");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Examples:");
+        player.sendMessage(ChatColor.WHITE + "  /skin Notch" + ChatColor.GRAY + " - Apply Notch's skin to your alt");
+        player.sendMessage(ChatColor.WHITE + "  /skin Steve" + ChatColor.GRAY + " - Apply Steve's skin");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Important Notes:");
+        player.sendMessage(ChatColor.GRAY + "  • Other players see your new skin immediately");
+        player.sendMessage(ChatColor.GRAY + "  • You see your new skin after reconnecting");
+        player.sendMessage(ChatColor.GRAY + "  • Skin persists through server restarts");
+        player.sendMessage(ChatColor.GRAY + "  • Player name must be valid (3-16 characters)");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Related Commands:");
+        player.sendMessage(ChatColor.WHITE + "  /alt <username>" + ChatColor.GRAY + " - Create or switch to an alt");
+        player.sendMessage(ChatColor.WHITE + "  /main" + ChatColor.GRAY + " - Switch back to main account");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.GREEN + "Permission: " + ChatColor.WHITE + "altaccount.skin");
+        player.sendMessage("");
     }
 }

@@ -27,6 +27,12 @@ public class AltCommand implements CommandExecutor {
         
         Player player = (Player) sender;
         
+        // Check for help argument
+        if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
+            showHelp(player);
+            return true;
+        }
+        
         // Check permission
         if (!player.hasPermission("altaccount.alt")) {
             player.sendMessage(ChatColor.RED + "You don't have permission to use alt accounts!");
@@ -106,5 +112,28 @@ public class AltCommand implements CommandExecutor {
         // Reset other stats
         player.setFireTicks(0);
         player.setRemainingAir(player.getMaximumAir());
+    }
+    
+    private void showHelp(Player player) {
+        player.sendMessage("");
+        player.sendMessage(ChatColor.GOLD + "=== " + ChatColor.YELLOW + "Alt Command Help" + ChatColor.GOLD + " ===");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.AQUA + "/alt <username>" + ChatColor.GRAY + " - Create or switch to an alt account");
+        player.sendMessage(ChatColor.GRAY + "  Creates a new alt if it doesn't exist, or switches to existing one");
+        player.sendMessage(ChatColor.GRAY + "  Your main account data is automatically saved");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.AQUA + "/alt help" + ChatColor.GRAY + " - Show this help message");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Examples:");
+        player.sendMessage(ChatColor.WHITE + "  /alt Steve" + ChatColor.GRAY + " - Switch to alt named 'Steve'");
+        player.sendMessage(ChatColor.WHITE + "  /alt builder123" + ChatColor.GRAY + " - Create/switch to 'builder123'");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Related Commands:");
+        player.sendMessage(ChatColor.WHITE + "  /main" + ChatColor.GRAY + " - Switch back to your main account");
+        player.sendMessage(ChatColor.WHITE + "  /altlist" + ChatColor.GRAY + " - List all your alt accounts");
+        player.sendMessage(ChatColor.WHITE + "  /skin <player>" + ChatColor.GRAY + " - Change your alt's skin");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.GREEN + "Permission: " + ChatColor.WHITE + "altaccount.alt");
+        player.sendMessage("");
     }
 }

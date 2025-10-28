@@ -1,5 +1,36 @@
 # Changelog - AltAccount Plugin
 
+## Version 1.2.0 - 28 octobre 2025
+
+### ✨ Nouvelles fonctionnalités
+- **Commande `/altlist`** : Liste tous vos comptes alts avec un affichage formaté
+- **Support `/help`** : Toutes les commandes supportent maintenant l'argument `help` pour l'aide détaillée
+- **Affichage amélioré** : Interface utilisateur colorée et informative pour `/altlist`
+- **Gestion des permissions** : Nouvelle permission `altaccount.list` pour la commande `/altlist`
+
+### 🎨 Améliorations de l'interface
+- **Messages d'aide complets** : Chaque commande affiche maintenant une aide détaillée avec exemples
+- **Statut actuel** : `/altlist` montre clairement quel compte vous utilisez actuellement
+- **Navigation facile** : Liens entre les commandes dans les messages d'aide
+- **Codes couleur** : Interface colorée pour une meilleure lisibilité
+
+### 📋 Nouvelles commandes
+- `/altlist` - Affiche tous vos comptes alts
+- `/altlist help` - Aide pour la commande altlist
+- `/alt help` - Aide pour la commande alt
+- `/main help` - Aide pour la commande main
+- `/skin help` - Aide pour la commande skin
+- `/random help` - Aide pour la commande random
+
+### 🔐 Permissions mises à jour
+- `altaccount.list` - Permet d'utiliser `/altlist` (défaut: OP)
+- `altaccount.*` - Inclut maintenant `altaccount.list`
+
+### 🛠️ Améliorations techniques
+- **Méthode `getPlayerAlts()`** : Récupération efficace de tous les alts d'un joueur
+- **Tri alphabétique** : Les alts sont affichés par ordre alphabétique
+- **Exclusion du compte principal** : Le compte "main" n'apparaît pas dans la liste des alts
+
 ## Version 1.1.0 - 28 octobre 2025
 
 ### 🔄 Corrections majeures - Persistance et Skins

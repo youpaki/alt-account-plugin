@@ -27,6 +27,12 @@ public class MainCommand implements CommandExecutor {
         
         Player player = (Player) sender;
         
+        // Check for help argument
+        if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
+            showHelp(player);
+            return true;
+        }
+        
         // Check permission
         if (!player.hasPermission("altaccount.main")) {
             player.sendMessage(ChatColor.RED + "You don't have permission to switch to main account!");
@@ -65,5 +71,27 @@ public class MainCommand implements CommandExecutor {
         }
         
         return true;
+    }
+    
+    private void showHelp(Player player) {
+        player.sendMessage("");
+        player.sendMessage(ChatColor.GOLD + "=== " + ChatColor.YELLOW + "Main Command Help" + ChatColor.GOLD + " ===");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.AQUA + "/main" + ChatColor.GRAY + " - Switch back to your main account");
+        player.sendMessage(ChatColor.GRAY + "  Saves your current alt data and restores your main account");
+        player.sendMessage(ChatColor.GRAY + "  All your original items, XP, and location are restored");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.AQUA + "/main help" + ChatColor.GRAY + " - Show this help message");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Note:");
+        player.sendMessage(ChatColor.GRAY + "  This command only works when you're on an alt account");
+        player.sendMessage(ChatColor.GRAY + "  If you're already on your main account, nothing happens");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.YELLOW + "Related Commands:");
+        player.sendMessage(ChatColor.WHITE + "  /alt <username>" + ChatColor.GRAY + " - Create or switch to an alt");
+        player.sendMessage(ChatColor.WHITE + "  /altlist" + ChatColor.GRAY + " - List all your alt accounts");
+        player.sendMessage("");
+        player.sendMessage(ChatColor.GREEN + "Permission: " + ChatColor.WHITE + "altaccount.main");
+        player.sendMessage("");
     }
 }
